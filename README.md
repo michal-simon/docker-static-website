@@ -1,8 +1,10 @@
 # Docker Static Website
 
+[![Codeac.io](https://static.codeac.io/badges/2-220649553.svg "Codeac.io")](https://app.codeac.io/github/michal-simon/docker-static-website)
+
 Docker container description for static website build.
 
 *Includes:*
-* Node 10.x
+* Node 12.x
 * Ruby 2.5
 * Python 3
