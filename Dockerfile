@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM ubuntu:20.04
 
 RUN apt-get update \
  && apt-get install -y --no-install-recommends \
@@ -19,13 +19,13 @@ RUN apt-get update \
  && rm -rf /var/lib/apt/lists/*
 
 RUN add-apt-repository ppa:brightbox/ruby-ng -y
-RUN curl -sL https://deb.nodesource.com/setup_12.x -o nodesource_setup.sh
+RUN curl -sL https://deb.nodesource.com/setup_14.x -o nodesource_setup.sh
 RUN bash nodesource_setup.sh
 RUN apt-get update \
  && apt-get install -y --force-yes --no-install-recommends \
   nodejs \
-  ruby2.5 \
-  ruby2.5-dev \
+  ruby2.6 \
+  ruby2.6-dev \
   zip \
   unzip \
   gcc \
