@@ -21,14 +21,12 @@ RUN apt-get update \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
-RUN add-apt-repository ppa:brightbox/ruby-ng -y
 RUN curl -sL https://deb.nodesource.com/setup_14.x -o nodesource_setup.sh
 RUN bash nodesource_setup.sh
 RUN apt-get update \
  && apt-get install -y --force-yes --no-install-recommends \
   nodejs \
-  ruby2.6 \
-  ruby2.6-dev \
+  ruby-full \
   zip \
   unzip \
   gcc \
