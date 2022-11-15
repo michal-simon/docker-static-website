@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM ubuntu:22.04
 
 ENV TZ=UTC
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
@@ -6,38 +6,28 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN apt-get update \
  && apt-get install -y --no-install-recommends \
     build-essential \
-    software-properties-common \
+    ca-certificates \
+    zip \
+    unzip \
     curl \
     git \
-    python3-pip \
-    python3-dev \
-    libffi-dev \
-    libssl-dev \
-    libxml2-dev \
-    libxslt1-dev \
-    libjpeg8-dev \
-    zlib1g-dev \
-    gpg-agent \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
-RUN curl -sL https://deb.nodesource.com/setup_16.x -o nodesource_setup.sh
-RUN bash nodesource_setup.sh
-RUN apt-get update \
- && apt-get install -y --force-yes --no-install-recommends \
-  nodejs \
-  ruby-full \
-  zip \
-  unzip \
-  gcc \
-  g++ \
+RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash \
+ && apt-get install -y --no-install-recommends \
+    nodejs \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
-RUN gem install rake bundler
-RUN pip3 install setuptools --upgrade \
- && pip3 install awscli --upgrade
+RUN npm config set cache /tmp/npm_cache --global
+
+RUN cd /tmp \
+  && curl https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip -o awscliv2.zip \
+  && unzip -q awscliv2.zip \
+  && ./aws/install \
+  && rm -rf aws awscliv2.zip
+
 RUN mkdir -p /www
 
-USER root
 WORKDIR /www
