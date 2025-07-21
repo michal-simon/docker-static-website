@@ -5,12 +5,13 @@
 Docker container description for static website build.
 
 ## Includes
-* Node 20.x
+* Ubuntu 24.04
+* Node 22.x
 * Ruby
 * AWS CLI
 
 ## How to build it
 
 ```bash
-docker buildx build --platform linux/amd64,linux/arm64 --push --tag michalsimon/static-website:node20 .
+docker buildx build --platform linux/amd64,linux/arm64 --push --tag michalsimon/static-website:node22 .
 ```
