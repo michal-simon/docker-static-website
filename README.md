@@ -8,6 +8,7 @@ Docker container description for static website build.
 * Ubuntu 24.04
 * Node 22.x
 * Ruby
+* Python
 * AWS CLI
 
 ## How to build it
