@@ -7,9 +7,9 @@ Docker container description for static website build.
 ## Includes
 * Ubuntu 24.04
 * Node 22.x
-* Ruby
-* Python
-* AWS CLI
+* Ruby 3.2
+* Python 3.12
+* AWS CLI 2
 
 ## How to build it
 
